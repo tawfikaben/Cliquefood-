@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bella Cucina - Menu Interactif</title>
+    <title>Espace Alpha - Menu Interactif</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +12,8 @@
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f8f5f2;
-            color: #2d2926;
+            background-color: #f8f8f8;
+            color: #333;
         }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
@@ -22,7 +23,7 @@
             direction: rtl;
         }
         .category-tab.active {
-            background-color: #8c1c13;
+            background-color: #2e7d32; /* Dark green */
             color: white;
         }
         .food-item {
@@ -47,8 +48,8 @@
             max-height: 800px;
         }
         .custom-checkbox:checked + label div:first-child {
-            background-color: #8c1c13;
-            border-color: #8c1c13;
+            background-color: #2e7d32; /* Dark green */
+            border-color: #2e7d32;
         }
         .custom-checkbox:checked + label div:first-child::after {
             content: '✓';
@@ -94,7 +95,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #f8f5f2;
+            background-color: #f8f8f8;
             z-index: 200;
             overflow-y: auto;
         }
@@ -138,7 +139,7 @@
             transition: all 0.3s ease;
         }
         .language-toggle.active {
-            background-color: #8c1c13;
+            background-color: #2e7d32; /* Dark green */
             color: white;
         }
     </style>
@@ -149,8 +150,8 @@
         <header class="bg-white shadow-md">
             <div class="container mx-auto px-4 py-6 flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="w-12 h-12 rounded-full bg-[#8c1c13] flex items-center justify-center text-white text-xl font-bold mr-3">BC</div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-[#2d2926]">Bella Cucina</h1>
+                    <div class="w-12 h-12 rounded-full bg-[#2e7d32] flex items-center justify-center text-white text-xl font-bold mr-3">EA</div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Espace Alpha</h1>
                 </div>
                 <div class="flex items-center space-x-2">
                     <button id="fr-toggle" class="language-toggle active" onclick="changeLanguage('fr')">FR</button>
@@ -223,7 +224,7 @@
 
             <!-- Food Items Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <!-- Appetizers -->
+                <!-- Appetizers (20 items) -->
                 <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content" data-category="appetizers">
                     <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bruschetta" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -242,7 +243,7 @@
                             <span class="color-dot bg-green-500" title="Végétarien"></span>
                             <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="bruschetta" data-name-fr="Bruschetta" data-name-ar="بروسكيتا" data-price="80">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="bruschetta" data-name-fr="Bruschetta" data-name-ar="بروسكيتا" data-price="80">
                             <span class="fr">Ajouter à la commande</span>
                             <span class="ar hidden arabic">أضف إلى الطلب</span>
                         </button>
@@ -267,7 +268,7 @@
                             <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
                             <span class="color-dot bg-blue-500" title="Fruits de mer"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="calamari" data-name-fr="Calamari Fritti" data-name-ar="كالاماري مقلي" data-price="120">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="calamari" data-name-fr="Calamari Fritti" data-name-ar="كالاماري مقلي" data-price="120">
                             <span class="fr">Ajouter à la commande</span>
                             <span class="ar hidden arabic">أضف إلى الطلب</span>
                         </button>
@@ -291,916 +292,78 @@
                         <div class="flex mb-4">
                             <span class="color-dot bg-green-500" title="Végétarien"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="caprese" data-name-fr="Salade Caprese" data-name-ar="سلطة كابريزي" data-price="90">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="caprese" data-name-fr="Salade Caprese" data-name-ar="سلطة كابريزي" data-price="90">
                             <span class="fr">Ajouter à la commande</span>
                             <span class="ar hidden arabic">أضف إلى الطلب</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Main Courses -->
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="main-courses">
-                    <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Osso Buco" class="w-full h-48 object-cover">
+                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content" data-category="appetizers">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tartare de Saumon" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">
-                                <span class="fr">Osso Buco</span>
-                                <span class="ar hidden arabic">أوسو بوكو</span>
-                            </h3>
-                            <span class="text-lg font-semibold">240 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Jarret de veau braisé avec légumes et risotto au safran</span>
-                            <span class="ar hidden arabic">ساق عجل مطهوة ببطء مع خضروات وريزوتو بالزعفران</span>
-                        </p>
-                        <div class="flex mb-4"></div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="ossobuco" data-name-fr="Osso Buco" data-name-ar="أوسو بوكو" data-price="240">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="main-courses">
-                    <img src="https://images.unsplash.com/photo-1515669097368-22e68427d265?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Saltimbocca" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Saltimbocca alla Romana</span>
-                                <span class="ar hidden arabic">سالتيمبوكا الرومانية</span>
-                            </h3>
-                            <span class="text-lg font-semibold">220 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Escalopes de veau avec jambon de Parme et sauge</span>
-                            <span class="ar hidden arabic">شرائح لحم العجل مع لحم بارما والمريمية</span>
-                        </p>
-                        <div class="flex mb-4"></div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="saltimbocca" data-name-fr="Saltimbocca alla Romana" data-name-ar="سالتيمبوكا الرومانية" data-price="220">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Pasta -->
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="pasta">
-                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Spaghetti Carbonara" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Spaghetti Carbonara</span>
-                                <span class="ar hidden arabic">سباغيتي كاربونارا</span>
-                            </h3>
-                            <span class="text-lg font-semibold">160 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Spaghetti avec pancetta, œuf, poivre noir et pecorino</span>
-                            <span class="ar hidden arabic">سباغيتي مع لحم مقدد، بيض، فلفل أسود وجبنة بيكورينو</span>
-                        </p>
-                        <div class="flex mb-4">
-                            <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
-                        </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="carbonara" data-name-fr="Spaghetti Carbonara" data-name-ar="سباغيتي كاربونارا" data-price="160">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="pasta">
-                    <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Linguine alle Vongole" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Linguine alle Vongole</span>
-                                <span class="ar hidden arabic">لينغويني بالمحار</span>
-                            </h3>
-                            <span class="text-lg font-semibold">180 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Linguine avec palourdes, ail, vin blanc et persil</span>
-                            <span class="ar hidden arabic">لينغويني مع المحار، الثوم، النبيذ الأبيض والبقدونس</span>
-                        </p>
-                        <div class="flex mb-4">
-                            <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
-                            <span class="color-dot bg-blue-500" title="Fruits de mer"></span>
-                        </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="vongole" data-name-fr="Linguine alle Vongole" data-name-ar="لينغويني بالمحار" data-price="180">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Pizza -->
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="pizza">
-                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Margherita" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Pizza Margherita</span>
-                                <span class="ar hidden arabic">بيتزا مارغريتا</span>
+                                <span class="fr">Tartare de Saumon</span>
+                                <span class="ar hidden arabic">تارتار السلمون</span>
                             </h3>
                             <span class="text-lg font-semibold">140 DH</span>
                         </div>
                         <p class="text-gray-600 mb-3">
-                            <span class="fr">Sauce tomate, mozzarella fraîche et basilic</span>
-                            <span class="ar hidden arabic">صلصة طماطم، جبنة موزاريلا طازجة وريحان</span>
+                            <span class="fr">Saumon frais coupé en dés avec avocat et citron</span>
+                            <span class="ar hidden arabic">سمك السلمون الطازج مقطع مع أفوكادو وليمون</span>
                         </p>
                         <div class="flex mb-4">
-                            <span class="color-dot bg-green-500" title="Végétarien"></span>
-                            <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
+                            <span class="color-dot bg-blue-500" title="Fruits de mer"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="margherita" data-name-fr="Pizza Margherita" data-name-ar="بيتزا مارغريتا" data-price="140">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="tartaresaumon" data-name-fr="Tartare de Saumon" data-name-ar="تارتار السلمون" data-price="140">
                             <span class="fr">Ajouter à la commande</span>
                             <span class="ar hidden arabic">أضف إلى الطلب</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="pizza">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Diavola" class="w-full h-48 object-cover">
+                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content" data-category="appetizers">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salade César" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">
-                                <span class="fr">Pizza Diavola</span>
-                                <span class="ar hidden arabic">بيتزا ديافولا</span>
+                                <span class="fr">Salade César</span>
+                                <span class="ar hidden arabic">سلطة سيزر</span>
                             </h3>
-                            <span class="text-lg font-semibold">160 DH</span>
+                            <span class="text-lg font-semibold">95 DH</span>
                         </div>
                         <p class="text-gray-600 mb-3">
-                            <span class="fr">Sauce tomate, mozzarella, salami piquant et olives</span>
-                            <span class="ar hidden arabic">صلصة طماطم، جبنة موزاريلا، سلامي حار وزيتون</span>
+                            <span class="fr">Laitue romaine, croûtons, parmesan et sauce césar</span>
+                            <span class="ar hidden arabic">خس روماني، كروتونات، جبنة بارميزان وصلصة سيزر</span>
                         </p>
                         <div class="flex mb-4">
                             <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
-                            <span class="color-dot bg-red-500" title="Épicé"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="diavola" data-name-fr="Pizza Diavola" data-name-ar="بيتزا ديافولا" data-price="160">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="cesarsalad" data-name-fr="Salade César" data-name-ar="سلطة سيزر" data-price="95">
                             <span class="fr">Ajouter à la commande</span>
                             <span class="ar hidden arabic">أضف إلى الطلب</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Desserts -->
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="desserts">
-                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tiramisu" class="w-full h-48 object-cover">
+                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content" data-category="appetizers">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Soupe à l'Oignon" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">
-                                <span class="fr">Tiramisu</span>
-                                <span class="ar hidden arabic">تيراميسو</span>
+                                <span class="fr">Soupe à l'Oignon</span>
+                                <span class="ar hidden arabic">شوربة البصل</span>
                             </h3>
-                            <span class="text-lg font-semibold">80 DH</span>
+                            <span class="text-lg font-semibold">75 DH</span>
                         </div>
                         <p class="text-gray-600 mb-3">
-                            <span class="fr">Biscuits au café, mascarpone et cacao</span>
-                            <span class="ar hidden arabic">بسكويت بالقهوة، ماسكاربوني وكاكاو</span>
-                        </p>
-                        <div class="flex mb-4">
-                            <span class="color-dot bg-green-500" title="Végétarien"></span>
-                            <span class="color-dot bg-yellow-500" title="Contient du gluten"></span>
-                        </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="tiramisu" data-name-fr="Tiramisu" data-name-ar="تيراميسو" data-price="80">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="desserts">
-                    <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Panna Cotta" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Panna Cotta</span>
-                                <span class="ar hidden arabic">بانا كوتا</span>
-                            </h3>
-                            <span class="text-lg font-semibold">70 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Crème cuite à la vanille avec coulis de fruits rouges</span>
-                            <span class="ar hidden arabic">كريمة مطبوخة بالفانيليا مع صلصة التوت</span>
+                            <span class="fr">Soupe traditionnelle française avec oignons caramélisés et fromage fondu</span>
+                            <span class="ar hidden arabic">شوربة فرنسية تقليدية مع بصل مكرمل وجبنة ذائبة</span>
                         </p>
                         <div class="flex mb-4">
                             <span class="color-dot bg-green-500" title="Végétarien"></span>
                         </div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="pannacotta" data-name-fr="Panna Cotta" data-name-ar="بانا كوتا" data-price="70">
+                        <button class="add-to-order w-full py-2 bg-[#2e7d32] text-white rounded-lg hover:bg-[#1b5e20] transition-colors" data-id="soupeoignon" data-name-fr="Soupe à l'Oignon" data-name-ar="شوربة البصل" data-price="75">
                             <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Drinks -->
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="drinks">
-                    <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vin Rouge" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Vin Rouge (Chianti)</span>
-                                <span class="ar hidden arabic">نبيذ أحمر (كيانتي)</span>
-                            </h3>
-                            <span class="text-lg font-semibold">60 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Verre de vin rouge Chianti</span>
-                            <span class="ar hidden arabic">كأس من النبيذ الأحمر كيانتي</span>
-                        </p>
-                        <div class="flex mb-4"></div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="redwine" data-name-fr="Vin Rouge (Chianti)" data-name-ar="نبيذ أحمر (كيانتي)" data-price="60">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="food-item bg-white rounded-xl shadow-md overflow-hidden category-content hidden" data-category="drinks">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Espresso" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">
-                                <span class="fr">Espresso</span>
-                                <span class="ar hidden arabic">إسبريسو</span>
-                            </h3>
-                            <span class="text-lg font-semibold">30 DH</span>
-                        </div>
-                        <p class="text-gray-600 mb-3">
-                            <span class="fr">Café espresso italien</span>
-                            <span class="ar hidden arabic">قهوة إسبريسو إيطالية</span>
-                        </p>
-                        <div class="flex mb-4"></div>
-                        <button class="add-to-order w-full py-2 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors" data-id="espresso" data-name-fr="Espresso" data-name-ar="إسبريسو" data-price="30">
-                            <span class="fr">Ajouter à la commande</span>
-                            <span class="ar hidden arabic">أضف إلى الطلب</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order Summary -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-                <div class="p-4 bg-[#8c1c13] text-white flex justify-between items-center cursor-pointer" id="order-summary-toggle">
-                    <h2 class="text-xl font-bold">
-                        <span class="fr">Résumé de la commande</span>
-                        <span class="ar hidden arabic">ملخص الطلب</span>
-                    </h2>
-                    <div class="flex items-center">
-                        <span id="order-total" class="mr-2">0 DH</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform" id="order-summary-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="order-summary p-4" id="order-summary">
-                    <div id="order-items" class="mb-4">
-                        <p class="text-gray-500 text-center">
-                            <span class="fr">Votre commande est vide</span>
-                            <span class="ar hidden arabic">طلبك فارغ</span>
-                        </p>
-                    </div>
-                    <div class="flex justify-between font-bold text-lg mb-4">
-                        <span>
-                            <span class="fr">Total</span>
-                            <span class="ar hidden arabic">المجموع</span>
-                        </span>
-                        <span id="order-total-summary">0 DH</span>
-                    </div>
-                    <div class="flex flex-col space-y-4">
-                        <div>
-                            <label class="block mb-2 font-medium">
-                                <span class="fr">Numéro de table</span>
-                                <span class="ar hidden arabic">رقم الطاولة</span>
-                            </label>
-                            <input type="number" id="table-number" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8c1c13]">
-                        </div>
-                        <div>
-                            <label class="block mb-2 font-medium">
-                                <span class="fr">Notes spéciales</span>
-                                <span class="ar hidden arabic">ملاحظات خاصة</span>
-                            </label>
-                            <textarea id="special-notes" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8c1c13]" rows="3"></textarea>
-                        </div>
-                        <button id="place-order" class="w-full py-3 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors font-bold">
-                            <span class="fr">Passer la commande</span>
-                            <span class="ar hidden arabic">تأكيد الطلب</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Confirmation Modal -->
-        <div class="confirmation-modal" id="confirmation-modal">
-            <div class="modal-content bg-white rounded-xl shadow-lg p-6 max-w-md w-full mx-4">
-                <h2 class="text-2xl font-bold mb-4">
-                    <span class="fr">Commande confirmée!</span>
-                    <span class="ar hidden arabic">تم تأكيد الطلب!</span>
-                </h2>
-                <p class="mb-6">
-                    <span class="fr">Votre commande a été envoyée à la cuisine. Merci!</span>
-                    <span class="ar hidden arabic">تم إرسال طلبك إلى المطبخ. شكرا لك!</span>
-                </p>
-                <div class="bg-gray-100 p-4 rounded-lg mb-6">
-                    <p class="font-medium">
-                        <span class="fr">Numéro de commande:</span>
-                        <span class="ar hidden arabic">رقم الطلب:</span>
-                        <span id="order-number" class="font-bold"></span>
-                    </p>
-                </div>
-                <button id="close-modal" class="w-full py-3 bg-[#8c1c13] text-white rounded-lg hover:bg-[#6e160f] transition-colors font-bold">
-                    <span class="fr">Fermer</span>
-                    <span class="ar hidden arabic">إغلاق</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Admin Screen -->
-        <div class="admin-screen" id="admin-screen">
-            <div class="container mx-auto px-4 py-8">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-2xl font-bold">
-                        <span class="fr">Administration</span>
-                        <span class="ar hidden arabic">لوحة الإدارة</span>
-                    </h2>
-                    <button id="admin-close" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Admin Login -->
-                <div id="admin-login" class="bg-white rounded-xl shadow-md p-6 max-w-md mx-auto">
-                    <h3 class="text-xl font-bold mb-4">
-                        <span class="fr">Connexion</span>
-                        <span class="ar hidden arabic">تسجيل الدخول</span>
-                    </h3>
-                    <div class="mb-4">
-                        <label class="block mb-2 font-medium">
-                            <span class="fr">Code PIN</span>
-                            <span class="ar hidden arabic">رمز PIN</span>
-                        </label>
-                        <input type="password" id="admin-pin" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8c1c13] text-center text-2xl tracking-widest" maxlength="4" readonly>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 mb-4">
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="1">1</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="2">2</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="3">3</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="4">4</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="5">5</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="6">6</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="7">7</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="8">8</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="9">9</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="clear">C</button>
-                        <button class="keypad-button bg-gray-100 rounded-lg p-4 text-xl font-bold" data-key="0">0</button>
-                        <button class="keypad-button bg-[#8c1c13] text-white rounded-lg p-4 text-xl font-bold" data-key="enter">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </button>
-                    </div>
-                    <p id="login-error" class="text-red-500 text-center hidden">
-                        <span class="fr">Code PIN incorrect</span>
-                        <span class="ar hidden arabic">رمز PIN غير صحيح</span>
-                    </p>
-                </div>
-
-                <!-- Admin Dashboard -->
-                <div id="admin-dashboard" class="hidden">
-                    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-                        <h3 class="text-xl font-bold mb-4">
-                            <span class="fr">Commandes actives</span>
-                            <span class="ar hidden arabic">الطلبات النشطة</span>
-                        </h3>
-                        <div id="active-orders" class="space-y-4">
-                            <!-- Orders will be populated here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Order Manager with 24-hour expiration
-        class OrderManager {
-            constructor() {
-                this.orders = {};
-                this.orderCounter = 1;
-                this.loadOrders();
-                setInterval(() => this.cleanExpiredOrders(), 3600000); // Clean every hour
-            }
-
-            loadOrders() {
-                const savedOrders = localStorage.getItem('restaurantOrders');
-                if (savedOrders) {
-                    const parsed = JSON.parse(savedOrders);
-                    this.orders = parsed.orders || {};
-                    this.orderCounter = parsed.orderCounter || 1;
-                    this.cleanExpiredOrders(); // Clean expired orders on load
-                }
-            }
-
-            saveOrders() {
-                localStorage.setItem('restaurantOrders', JSON.stringify({
-                    orders: this.orders,
-                    orderCounter: this.orderCounter
-                }));
-            }
-
-            addOrder(order) {
-                const orderId = `#${String(this.orderCounter).padStart(3, '0')}`;
-                this.orderCounter++;
-                
-                const expiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
-                
-                const orderData = {
-                    ...order,
-                    id: orderId,
-                    createdAt: new Date().toISOString(),
-                    expiresAt: new Date(expiresAt).toISOString(),
-                    status: 'new'
-                };
-                
-                this.orders[orderId] = orderData;
-                this.saveOrders();
-                return orderId;
-            }
-
-            getOrder(orderId) {
-                return this.orders[orderId];
-            }
-
-            getAllOrders() {
-                return Object.values(this.orders);
-            }
-
-            updateOrderStatus(orderId, status) {
-                if (this.orders[orderId]) {
-                    this.orders[orderId].status = status;
-                    this.saveOrders();
-                }
-            }
-
-            removeOrder(orderId) {
-                if (this.orders[orderId]) {
-                    delete this.orders[orderId];
-                    this.saveOrders();
-                }
-            }
-
-            cleanExpiredOrders() {
-                const now = new Date();
-                let changed = false;
-                
-                for (const orderId in this.orders) {
-                    if (new Date(this.orders[orderId].expiresAt) < now) {
-                        delete this.orders[orderId];
-                        changed = true;
-                    }
-                }
-                
-                if (changed) {
-                    this.saveOrders();
-                }
-            }
-        }
-
-        // Initialize the OrderManager
-        const orderManager = new OrderManager();
-
-        // Global variables
-        let currentLanguage = 'fr';
-        let orderItems = [];
-
-        // DOM Elements
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const categoryContents = document.querySelectorAll('.category-content');
-        const orderSummaryToggle = document.getElementById('order-summary-toggle');
-        const orderSummary = document.getElementById('order-summary');
-        const orderSummaryArrow = document.getElementById('order-summary-arrow');
-        const orderItemsContainer = document.getElementById('order-items');
-        const orderTotalElements = document.querySelectorAll('#order-total, #order-total-summary');
-        const placeOrderButton = document.getElementById('place-order');
-        const confirmationModal = document.getElementById('confirmation-modal');
-        const orderNumberElement = document.getElementById('order-number');
-        const closeModalButton = document.getElementById('close-modal');
-        const adminButton = document.getElementById('admin-button');
-        const adminScreen = document.getElementById('admin-screen');
-        const adminCloseButton = document.getElementById('admin-close');
-        const adminLogin = document.getElementById('admin-login');
-        const adminDashboard = document.getElementById('admin-dashboard');
-        const adminPinInput = document.getElementById('admin-pin');
-        const keypadButtons = document.querySelectorAll('.keypad-button');
-        const loginError = document.getElementById('login-error');
-        const activeOrdersContainer = document.getElementById('active-orders');
-        const frToggle = document.getElementById('fr-toggle');
-        const arToggle = document.getElementById('ar-toggle');
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up category tabs
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const category = tab.getAttribute('data-category');
-                    
-                    // Update active tab
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    // Show corresponding content
-                    categoryContents.forEach(content => {
-                        if (content.getAttribute('data-category') === category) {
-                            content.classList.remove('hidden');
-                        } else {
-                            content.classList.add('hidden');
-                        }
-                    });
-                });
-            });
-
-            // Order summary toggle
-            orderSummaryToggle.addEventListener('click', () => {
-                orderSummary.classList.toggle('active');
-                orderSummaryArrow.classList.toggle('rotate-180');
-            });
-
-            // Add to order buttons
-            document.querySelectorAll('.add-to-order').forEach(button => {
-                button.addEventListener('click', () => {
-                    const id = button.getAttribute('data-id');
-                    const nameFr = button.getAttribute('data-name-fr');
-                    const nameAr = button.getAttribute('data-name-ar');
-                    const price = parseFloat(button.getAttribute('data-price'));
-                    
-                    // Check if item already exists in order
-                    const existingItem = orderItems.find(item => item.id === id);
-                    
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        orderItems.push({
-                            id,
-                            nameFr,
-                            nameAr,
-                            price,
-                            quantity: 1
-                        });
-                    }
-                    
-                    updateOrderSummary();
-                });
-            });
-
-            // Place order
-            placeOrderButton.addEventListener('click', () => {
-                const tableNumber = document.getElementById('table-number').value;
-                const specialNotes = document.getElementById('special-notes').value;
-                
-                if (orderItems.length === 0) {
-                    alert(currentLanguage === 'fr' ? 'Votre commande est vide!' : 'طلبك فارغ!');
-                    return;
-                }
-                
-                if (!tableNumber) {
-                    alert(currentLanguage === 'fr' ? 'Veuillez entrer votre numéro de table.' : 'الرجاء إدخال رقم الطاولة.');
-                    return;
-                }
-                
-                // Create new order
-                const orderId = orderManager.addOrder({
-                    tableNumber,
-                    specialNotes,
-                    items: [...orderItems],
-                    status: 'new',
-                    timestamp: new Date().toISOString()
-                });
-                
-                // Show confirmation
-                orderNumberElement.textContent = orderId;
-                confirmationModal.classList.add('active');
-                
-                // Reset order
-                orderItems = [];
-                updateOrderSummary();
-                document.getElementById('table-number').value = '';
-                document.getElementById('special-notes').value = '';
-            });
-
-            // Close modal
-            closeModalButton.addEventListener('click', () => {
-                confirmationModal.classList.remove('active');
-            });
-
-            // Admin button
-            adminButton.addEventListener('click', () => {
-                adminScreen.classList.add('active');
-                adminPinInput.value = '';
-                loginError.classList.add('hidden');
-                adminLogin.classList.remove('hidden');
-                adminDashboard.classList.add('hidden');
-            });
-
-            // Admin close
-            adminCloseButton.addEventListener('click', () => {
-                adminScreen.classList.remove('active');
-            });
-
-            // Keypad
-            keypadButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const key = button.getAttribute('data-key');
-                    
-                    if (key === 'clear') {
-                        adminPinInput.value = '';
-                    } else if (key === 'enter') {
-                        if (adminPinInput.value === '1234') { // Simple PIN for demo
-                            adminLogin.classList.add('hidden');
-                            adminDashboard.classList.remove('hidden');
-                            loginError.classList.add('hidden');
-                            updateAdminDashboard();
-                        } else {
-                            loginError.classList.remove('hidden');
-                        }
-                    } else {
-                        if (adminPinInput.value.length < 4) {
-                            adminPinInput.value += key;
-                        }
-                    }
-                });
-            });
-
-            // Language toggle
-            frToggle.addEventListener('click', () => {
-                changeLanguage('fr');
-            });
-            
-            arToggle.addEventListener('click', () => {
-                changeLanguage('ar');
-            });
-        });
-
-        // Update order summary
-        function updateOrderSummary() {
-            if (orderItems.length === 0) {
-                orderItemsContainer.innerHTML = `
-                    <p class="text-gray-500 text-center">
-                        <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Votre commande est vide</span>
-                        <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">طلبك فارغ</span>
-                    </p>
-                `;
-            } else {
-                let html = '';
-                let total = 0;
-                
-                orderItems.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    
-                    html += `
-                        <div class="flex justify-between items-center py-2 border-b">
-                            <div>
-                                <span class="font-medium">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">${item.nameFr}</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">${item.nameAr}</span>
-                                </span>
-                                <div class="flex items-center mt-1">
-                                    <button class="decrease-quantity px-2 bg-gray-200 rounded" data-index="${index}">-</button>
-                                    <span class="mx-2">${item.quantity}</span>
-                                    <button class="increase-quantity px-2 bg-gray-200 rounded" data-index="${index}">+</button>
-                                    <button class="remove-item ml-4 text-red-500" data-index="${index}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <span class="font-medium">${itemTotal.toFixed(0)} DH</span>
-                        </div>
-                    `;
-                });
-                
-                orderItemsContainer.innerHTML = html;
-                
-                // Update total
-                orderTotalElements.forEach(el => {
-                    el.textContent = `${total.toFixed(0)} DH`;
-                });
-                
-                // Add event listeners for quantity buttons
-                document.querySelectorAll('.decrease-quantity').forEach(button => {
-                    button.addEventListener('click', () => {
-                        const index = parseInt(button.getAttribute('data-index'));
-                        if (orderItems[index].quantity > 1) {
-                            orderItems[index].quantity -= 1;
-                        } else {
-                            orderItems.splice(index, 1);
-                        }
-                        updateOrderSummary();
-                    });
-                });
-                
-                document.querySelectorAll('.increase-quantity').forEach(button => {
-                    button.addEventListener('click', () => {
-                        const index = parseInt(button.getAttribute('data-index'));
-                        orderItems[index].quantity += 1;
-                        updateOrderSummary();
-                    });
-                });
-                
-                document.querySelectorAll('.remove-item').forEach(button => {
-                    button.addEventListener('click', () => {
-                        const index = parseInt(button.getAttribute('data-index'));
-                        orderItems.splice(index, 1);
-                        updateOrderSummary();
-                    });
-                });
-            }
-            
-            // If order is not empty, show order summary
-            if (orderItems.length > 0 && !orderSummary.classList.contains('active')) {
-                orderSummary.classList.add('active');
-                orderSummaryArrow.classList.add('rotate-180');
-            }
-        }
-
-        // Update admin dashboard
-        function updateAdminDashboard() {
-            const activeOrders = orderManager.getAllOrders();
-            
-            if (activeOrders.length === 0) {
-                activeOrdersContainer.innerHTML = `
-                    <p class="text-gray-500 text-center">
-                        <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Aucune commande active</span>
-                        <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">لا توجد طلبات نشطة</span>
-                    </p>
-                `;
-                return;
-            }
-            
-            let html = '';
-            
-            activeOrders.forEach(order => {
-                let statusClass = '';
-                let statusText = '';
-                
-                switch (order.status) {
-                    case 'new':
-                        statusClass = 'status-new';
-                        statusText = currentLanguage === 'fr' ? 'Nouvelle' : 'جديد';
-                        break;
-                    case 'preparing':
-                        statusClass = 'status-preparing';
-                        statusText = currentLanguage === 'fr' ? 'En préparation' : 'قيد التحضير';
-                        break;
-                    case 'ready':
-                        statusClass = 'status-ready';
-                        statusText = currentLanguage === 'fr' ? 'Prêt' : 'جاهز';
-                        break;
-                    case 'delivered':
-                        statusClass = 'status-delivered';
-                        statusText = currentLanguage === 'fr' ? 'Livré' : 'تم التسليم';
-                        break;
-                }
-                
-                let itemsHtml = '';
-                let total = 0;
-                
-                order.items.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    
-                    itemsHtml += `
-                        <div class="flex justify-between py-1">
-                            <span>
-                                <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">${item.nameFr}</span>
-                                <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">${item.nameAr}</span>
-                                <span class="text-gray-500"> x${item.quantity}</span>
-                            </span>
-                            <span>${itemTotal.toFixed(0)} DH</span>
-                        </div>
-                    `;
-                });
-                
-                html += `
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <div>
-                                <span class="font-bold">${order.id}</span>
-                                <span class="ml-2 status-badge ${statusClass}">${statusText}</span>
-                            </div>
-                            <div class="text-sm text-gray-500">
-                                ${new Date(order.timestamp).toLocaleTimeString()}
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-medium">
-                                <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Table:</span>
-                                <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">الطاولة:</span>
-                            </span> 
-                            ${order.tableNumber}
-                        </div>
-                        ${order.specialNotes ? `
-                            <div class="mb-2">
-                                <span class="font-medium">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Notes:</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">ملاحظات:</span>
-                                </span> 
-                                ${order.specialNotes}
-                            </div>
-                        ` : ''}
-                        <div class="border-t border-gray-200 my-2 pt-2">
-                            ${itemsHtml}
-                        </div>
-                        <div class="flex justify-between font-bold mt-2 pt-2 border-t border-gray-200">
-                            <span>
-                                <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Total</span>
-                                <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">المجموع</span>
-                            </span>
-                            <span>${total.toFixed(0)} DH</span>
-                        </div>
-                        <div class="mt-4 flex space-x-2">
-                            ${order.status === 'new' ? `
-                                <button class="update-status flex-1 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors" data-order-id="${order.id}" data-status="preparing">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Commencer la préparation</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">بدء التحضير</span>
-                                </button>
-                            ` : ''}
-                            ${order.status === 'preparing' ? `
-                                <button class="update-status flex-1 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors" data-order-id="${order.id}" data-status="ready">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Marquer comme prêt</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">وضع علامة كجاهز</span>
-                                </button>
-                            ` : ''}
-                            ${order.status === 'ready' ? `
-                                <button class="update-status flex-1 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors" data-order-id="${order.id}" data-status="delivered">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Marquer comme livré</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">وضع علامة كمسلم</span>
-                                </button>
-                            ` : ''}
-                            ${order.status === 'delivered' ? `
-                                <button class="remove-order flex-1 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors" data-order-id="${order.id}">
-                                    <span class="fr ${currentLanguage !== 'fr' ? 'hidden' : ''}">Supprimer</span>
-                                    <span class="ar ${currentLanguage !== 'ar' ? 'hidden' : ''} arabic">حذف</span>
-                                </button>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            activeOrdersContainer.innerHTML = html;
-            
-            // Add event listeners for status buttons
-            document.querySelectorAll('.update-status').forEach(button => {
-                button.addEventListener('click', () => {
-                    const orderId = button.getAttribute('data-order-id');
-                    const newStatus = button.getAttribute('data-status');
-                    
-                    orderManager.updateOrderStatus(orderId, newStatus);
-                    updateAdminDashboard();
-                });
-            });
-            
-            document.querySelectorAll('.remove-order').forEach(button => {
-                button.addEventListener('click', () => {
-                    const orderId = button.getAttribute('data-order-id');
-                    
-                    orderManager.removeOrder(orderId);
-                    updateAdminDashboard();
-                });
-            });
-        }
-
-        // Change language
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            
-            // Update language toggle buttons
-            if (lang === 'fr') {
-                frToggle.classList.add('active');
-                arToggle.classList.remove('active');
-                document.querySelectorAll('.fr').forEach(el => el.classList.remove('hidden'));
-                document.querySelectorAll('.ar').forEach(el => el.classList.add('hidden'));
-                document.documentElement.setAttribute('lang', 'fr');
-                document.body.style.direction = 'ltr';
-            } else {
-                frToggle.classList.remove('active');
-                arToggle.classList.add('active');
-                document.querySelectorAll('.fr').forEach(el => el.classList.add('hidden'));
-                document.querySelectorAll('.ar').forEach(el => el.classList.remove('hidden'));
-                document.documentElement.setAttribute('lang', 'ar');
-                document.body.style.direction = 'rtl';
-            }
-            
-            // Update order summary and admin dashboard
-            updateOrderSummary();
-            updateAdminDashboard();
-        }
-    </script>
-</body>
-</html>
+                            <span class
