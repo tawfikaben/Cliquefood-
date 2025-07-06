@@ -61,6 +61,11 @@
       border-radius: 5px;
       cursor: pointer;
       flex-wrap: wrap;
+      transition: all 0.3s;
+    }
+    
+    .menu-item:hover {
+      background-color: rgba(156, 46, 46, 0.1);
     }
     
     .item-name {
@@ -99,6 +104,14 @@
       margin: 10px 0;
     }
     
+    input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Lateef', cursive;
+      font-size: 1.1rem;
+    }
+    
     button {
       background-color: var(--color-primary);
       color: white;
@@ -107,6 +120,12 @@
       border-radius: 5px;
       font-size: 1.3rem;
       font-family: 'Amiri', serif;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    button:hover {
+      background-color: var(--color-secondary);
     }
     
     .commande-item {
@@ -117,12 +136,26 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      border-right: 4px solid var(--color-secondary);
     }
     
     .total {
       font-weight: bold;
       font-size: 1.5rem;
       color: var(--color-primary);
+      margin: 15px 0;
+      text-align: center;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .error {
+      color: red;
+      text-align: center;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -135,17 +168,17 @@
     
     <div class="menu-section" id="main-dishes">
       <h3>الأطباق الرئيسية</h3>
-      <div id="main-items"></div>
+      <div id="main-items" class="loading">جاري تحميل القائمة...</div>
     </div>
     
     <div class="menu-section" id="appetizers">
       <h3>المقبلات والشوربات</h3>
-      <div id="appetizer-items"></div>
+      <div id="appetizer-items" class="loading">جاري تحميل القائمة...</div>
     </div>
     
     <div class="menu-section" id="desserts">
       <h3>الحلويات والمشروبات</h3>
-      <div id="dessert-items"></div>
+      <div id="dessert-items" class="loading">جاري تحميل القائمة...</div>
     </div>
     
     <form id="commandeForm">
@@ -159,6 +192,7 @@
       <div class="total" id="totalCommande">المجموع: 0 درهم</div>
       
       <button type="submit">تأكيد الطلب</button>
+      <div id="error-message" class="error"></div>
     </form>
   </div>
 
@@ -191,9 +225,13 @@
         database.ref(`menu/${category}`).on('value', snapshot => {
           const items = snapshot.val();
           const container = document.getElementById(`${category}-items`);
-          container.innerHTML = '';
           
-          if (!items) return;
+          if (!items) {
+            container.innerHTML = '<p>لا توجد أطباق في هذا القسم</p>';
+            return;
+          }
+          
+          container.innerHTML = '';
           
           Object.keys(items).forEach(key => {
             const item = items[key];
@@ -215,6 +253,9 @@
             
             container.appendChild(itemDiv);
           });
+        }, error => {
+          document.getElementById(`${category}-items`).innerHTML = 
+            `<div class="error">خطأ في تحميل القائمة: ${error.message}</div>`;
         });
       });
     }
@@ -227,6 +268,13 @@
         prix: parseInt(price)
       });
       updateOrderList();
+      
+      // تأثير مرئي عند الإضافة
+      const totalElement = document.getElementById('totalCommande');
+      totalElement.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        totalElement.style.transform = 'scale(1)';
+      }, 300);
     }
 
     // تحديث قائمة الطلبات
@@ -234,6 +282,12 @@
       const container = document.getElementById('listeCommandes');
       container.innerHTML = '';
       total = 0;
+      
+      if (commandes.length === 0) {
+        container.innerHTML = '<p>لم تقم بإضافة أي أطباق بعد</p>';
+        document.getElementById('totalCommande').textContent = 'المجموع: 0 درهم';
+        return;
+      }
       
       commandes.forEach((item, index) => {
         const sousTotal = item.quantite * item.prix;
@@ -244,7 +298,7 @@
         div.innerHTML = `
           <div>${item.quantite} × ${item.plat}</div>
           <div>${sousTotal} درهم 
-            <span onclick="removeItem(${index})" style="color:var(--color-primary);cursor:pointer;">×</span>
+            <span onclick="removeItem(${index})" style="color:var(--color-primary);cursor:pointer;margin-right:10px;">×</span>
           </div>
         `;
         container.appendChild(div);
@@ -264,11 +318,19 @@
       e.preventDefault();
       
       const table = document.getElementById('table').value;
+      const errorElement = document.getElementById('error-message');
       
-      if (!table || commandes.length === 0) {
-        alert('الرجاء تحديد رقم الطاولة وإضافة طلب واحد على الأقل');
+      if (!table) {
+        errorElement.textContent = 'الرجاء إدخال رقم الطاولة';
         return;
       }
+      
+      if (commandes.length === 0) {
+        errorElement.textContent = 'الرجاء إضافة أطباق إلى الطلب';
+        return;
+      }
+      
+      errorElement.textContent = '';
       
       database.ref('commandes').push({
         table: table,
@@ -277,10 +339,12 @@
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         statut: 'في الانتظار'
       }).then(() => {
-        alert(`تم تأكيد الطلب للطاولة ${table}! المجموع: ${total} درهم`);
+        alert(`تم تأكيد الطلب للطاولة ${table}!\nالمجموع: ${total} درهم`);
         commandes = [];
         updateOrderList();
         document.getElementById('table').value = '';
+      }).catch(error => {
+        errorElement.textContent = 'حدث خطأ أثناء إرسال الطلب: ' + error.message;
       });
     });
 
