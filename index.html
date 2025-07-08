@@ -2,354 +2,357 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>دار حسنا - مطعم مغربي أصيل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - دار حسنا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --color-primary: #9c2e2e;
-      --color-secondary: #e67e22;
-      --color-accent: #daa520;
-      --color-text: #5d4037;
-      --color-light: #f8f1e9;
+      --primary: #E94560;
+      --primary-light: #ff6b81;
+      --primary-hover: #d6344f;
+      --secondary: #0F3460;
+      --secondary-light: #1a4b8c;
+      --accent: #FFD32D;
+      --light: #F8F5F2;
+      --dark: #16213E;
+      --white: #FFFFFF;
+      --radius: 8px;
+      --radius-lg: 12px;
     }
-    
+
     * {
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Lateef', cursive;
-      background-color: var(--color-light);
-      color: var(--color-text);
       margin: 0;
       padding: 0;
-      font-size: 18px;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3840&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 500px;
+      padding: 1rem;
+      z-index: 1;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo i {
+      color: var(--accent);
+      font-size: 2.8rem;
+    }
+
+    .auth-title {
+      color: var(--white);
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: right;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      color: var(--white);
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 211, 45, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn {
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius);
+      border: none;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: #ffdc4d;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .login-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .login-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .login-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .auth-footer {
+      margin-top: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
       line-height: 1.6;
     }
-    
-    .container {
+
+    .auth-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .reflection {
+      position: absolute;
       width: 100%;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 15px;
+      height: 40%;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1));
+      z-index: 0;
     }
-    
-    h1, h2, h3 {
-      color: var(--color-primary);
-      text-align: center;
-      font-family: 'Amiri', serif;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
-    h1 {
-      font-size: 2.2rem;
+
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-10%, -10%); }
+      100% { transform: rotate(30deg) translate(10%, 10%); }
     }
-    
-    .menu-section {
-      margin-bottom: 30px;
-      background-color: rgba(255, 248, 240, 0.7);
-      padding: 15px;
-      border-radius: 5px;
-      border: 2px dashed var(--color-secondary);
-    }
-    
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      flex-wrap: wrap;
-      transition: all 0.3s;
-    }
-    
-    .menu-item:hover {
-      background-color: rgba(156, 46, 46, 0.1);
-    }
-    
-    .item-name {
-      font-weight: bold;
-      color: var(--color-primary);
-      font-size: 1.3rem;
-      width: 70%;
-    }
-    
-    .item-price {
-      color: var(--color-primary);
-      font-weight: bold;
-      font-size: 1.3rem;
-      width: 30%;
-      text-align: left;
-    }
-    
-    .item-desc {
-      font-size: 1.1rem;
-      color: var(--color-text);
-      margin-top: 5px;
-      width: 100%;
-    }
-    
-    form {
-      background-color: rgba(255, 248, 240, 0.9);
-      padding: 20px;
-      border-radius: 5px;
-      margin-top: 30px;
-      border: 2px solid var(--color-primary);
-    }
-    
-    label, input, button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-    }
-    
-    input {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family: 'Lateef', cursive;
-      font-size: 1.1rem;
-    }
-    
-    button {
-      background-color: var(--color-primary);
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 5px;
-      font-size: 1.3rem;
-      font-family: 'Amiri', serif;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    button:hover {
-      background-color: var(--color-secondary);
-    }
-    
-    .commande-item {
-      background-color: rgba(240, 240, 240, 0.9);
-      padding: 12px;
-      margin-bottom: 12px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      border-right: 4px solid var(--color-secondary);
-    }
-    
-    .total {
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: var(--color-primary);
-      margin: 15px 0;
-      text-align: center;
-    }
-    
-    .loading {
-      text-align: center;
-      padding: 20px;
-    }
-    
-    .error {
-      color: red;
-      text-align: center;
-      margin: 10px 0;
+
+    @media (max-width: 768px) {
+      .auth-card {
+        padding: 1.5rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .auth-title {
+        font-size: 1.5rem;
+      }
+      
+      .login-buttons {
+        flex-direction: column;
+      }
+      
+      .login-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>دار حسنا</h1>
-    <p style="text-align: center; font-size: 1.4rem;">مطبخ مغربي أصيل منذ 1985</p>
-    
-    <h2>قائمتنا الشهية</h2>
-    
-    <div class="menu-section" id="main-dishes">
-      <h3>الأطباق الرئيسية</h3>
-      <div id="main-items" class="loading">جاري تحميل القائمة...</div>
+  <div class="reflection"></div>
+  
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>دار حسنا</span>
+      </div>
+      <h1 class="auth-title">تسجيل الدخول</h1>
+      
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">البريد الإلكتروني</label>
+          <input type="email" id="email" class="form-control" required placeholder="ادخل بريدك الإلكتروني">
+        </div>
+        
+        <div class="form-group">
+          <label for="password" class="form-label">كلمة المرور</label>
+          <input type="password" id="password" class="form-control" required placeholder="ادخل كلمة المرور">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+        </button>
+      </form>
+      
+      <div class="login-buttons">
+        <a href="https://tawfikaben.github.io/Menu/" class="login-btn" target="_self">
+          <i class="fas fa-book-open"></i> القائمة
+        </a>
+        <a href="https://tawfikaben.github.io/Viva/" class="login-btn" target="_self">
+          <i class="fas fa-clipboard-list"></i> متابعة الطلبات
+        </a>
+      </div>
+      
+      <div class="auth-footer">
+        <p>للحصول على صلاحيات الدخول، يرجى التواصل مع <a href="mailto:admin@darhassna.com">مسؤول النظام</a></p>
+      </div>
     </div>
-    
-    <div class="menu-section" id="appetizers">
-      <h3>المقبلات والشوربات</h3>
-      <div id="appetizer-items" class="loading">جاري تحميل القائمة...</div>
-    </div>
-    
-    <div class="menu-section" id="desserts">
-      <h3>الحلويات والمشروبات</h3>
-      <div id="dessert-items" class="loading">جاري تحميل القائمة...</div>
-    </div>
-    
-    <form id="commandeForm">
-      <h2>تقديم الطلب</h2>
-      
-      <label for="table">رقم الطاولة:</label>
-      <input type="number" id="table" min="1" required>
-      
-      <div id="listeCommandes"></div>
-      
-      <div class="total" id="totalCommande">المجموع: 0 درهم</div>
-      
-      <button type="submit">تأكيد الطلب</button>
-      <div id="error-message" class="error"></div>
-    </form>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  
   <script>
-    // تكوين Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDpSF4J0bsd6T0ImMpse0KQQRADaxiYUQw",
-      authDomain: "darhassna-484c3.firebaseapp.com",
-      databaseURL: "https://darhassna-484c3-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "darhassna-484c3",
-      storageBucket: "darhassna-484c3.firebasestorage.app",
-      messagingSenderId: "141393162149",
-      appId: "1:141393162149:web:0717227eac221f5ddfc24c"
-    };
-
-    // تهيئة Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-    let commandes = [];
-    let total = 0;
-
-    // تحميل القائمة من Firebase
-    function loadMenu() {
-      const categories = ['main', 'appetizers', 'desserts'];
-      
-      categories.forEach(category => {
-        database.ref(`menu/${category}`).on('value', snapshot => {
-          const items = snapshot.val();
-          const container = document.getElementById(`${category}-items`);
-          
-          if (!items) {
-            container.innerHTML = '<p>لا توجد أطباق في هذا القسم</p>';
-            return;
-          }
-          
-          container.innerHTML = '';
-          
-          Object.keys(items).forEach(key => {
-            const item = items[key];
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'menu-item';
-            itemDiv.setAttribute('data-plat', item.name);
-            itemDiv.setAttribute('data-prix', item.price);
-            itemDiv.innerHTML = `
-              <div>
-                <div class="item-name">${item.name}</div>
-                <div class="item-desc">${item.desc || ''}</div>
-              </div>
-              <div class="item-price">${item.price} درهم</div>
-            `;
-            
-            itemDiv.addEventListener('click', function() {
-              addToOrder(item.name, item.price);
-            });
-            
-            container.appendChild(itemDiv);
-          });
-        }, error => {
-          document.getElementById(`${category}-items`).innerHTML = 
-            `<div class="error">خطأ في تحميل القائمة: ${error.message}</div>`;
-        });
-      });
-    }
-
-    // إضافة إلى الطلب
-    function addToOrder(name, price) {
-      commandes.push({
-        plat: name,
-        quantite: 1,
-        prix: parseInt(price)
-      });
-      updateOrderList();
-      
-      // تأثير مرئي عند الإضافة
-      const totalElement = document.getElementById('totalCommande');
-      totalElement.style.transform = 'scale(1.1)';
-      setTimeout(() => {
-        totalElement.style.transform = 'scale(1)';
-      }, 300);
-    }
-
-    // تحديث قائمة الطلبات
-    function updateOrderList() {
-      const container = document.getElementById('listeCommandes');
-      container.innerHTML = '';
-      total = 0;
-      
-      if (commandes.length === 0) {
-        container.innerHTML = '<p>لم تقم بإضافة أي أطباق بعد</p>';
-        document.getElementById('totalCommande').textContent = 'المجموع: 0 درهم';
-        return;
-      }
-      
-      commandes.forEach((item, index) => {
-        const sousTotal = item.quantite * item.prix;
-        total += sousTotal;
-        
-        const div = document.createElement('div');
-        div.className = 'commande-item';
-        div.innerHTML = `
-          <div>${item.quantite} × ${item.plat}</div>
-          <div>${sousTotal} درهم 
-            <span onclick="removeItem(${index})" style="color:var(--color-primary);cursor:pointer;margin-right:10px;">×</span>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-      
-      document.getElementById('totalCommande').textContent = `المجموع: ${total} درهم`;
-    }
-
-    // حذف من الطلب
-    window.removeItem = function(index) {
-      commandes.splice(index, 1);
-      updateOrderList();
-    };
-
-    // إرسال الطلب
-    document.getElementById('commandeForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
       
-      const table = document.getElementById('table').value;
-      const errorElement = document.getElementById('error-message');
-      
-      if (!table) {
-        errorElement.textContent = 'الرجاء إدخال رقم الطاولة';
+      if (!email || !password) {
+        alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور');
         return;
       }
       
-      if (commandes.length === 0) {
-        errorElement.textContent = 'الرجاء إضافة أطباق إلى الطلب';
-        return;
-      }
+      // Here you would normally handle the login logic
+      console.log('Login attempt with:', email, password);
       
-      errorElement.textContent = '';
-      
-      database.ref('commandes').push({
-        table: table,
-        commandes: commandes,
-        total: total,
-        timestamp: firebase.database.ServerValue.TIMESTAMP,
-        statut: 'في الانتظار'
-      }).then(() => {
-        alert(`تم تأكيد الطلب للطاولة ${table}!\nالمجموع: ${total} درهم`);
-        commandes = [];
-        updateOrderList();
-        document.getElementById('table').value = '';
-      }).catch(error => {
-        errorElement.textContent = 'حدث خطأ أثناء إرسال الطلب: ' + error.message;
+      // Animation effect on form elements
+      const inputs = document.querySelectorAll('.form-control');
+      inputs.forEach(input => {
+        input.style.transform = 'translateX(0)';
+        void input.offsetWidth; // Trigger reflow
+        input.style.transform = 'translateX(10px)';
+        setTimeout(() => {
+          input.style.transform = 'translateX(0)';
+        }, 300);
       });
     });
 
-    // تحميل القائمة عند بدء التشغيل
-    loadMenu();
+    // Add reflection effect when focusing on inputs
+    const inputs = document.querySelectorAll('.form-control');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.style.boxShadow = '0 0 15px rgba(255, 211, 45, 0.5)';
+        this.style.transition = 'all 0.3s ease';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.style.boxShadow = 'none';
+      });
+    });
   </script>
 </body>
 </html>
